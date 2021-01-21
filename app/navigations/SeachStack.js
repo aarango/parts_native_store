@@ -8,7 +8,7 @@ const SeachStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Search"
+        name="search"
         component={Search}
         options={{ title: "Busqueda" }}
       />

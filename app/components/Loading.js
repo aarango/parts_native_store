@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, ActivityIndicator, View } from 'react-native';
 import { Overlay } from 'react-native-elements';
+import { Colors } from '@auteco/theme';
+
 
 const Loading = ({ isVisible, text }) => {
   return (
@@ -11,7 +13,7 @@ const Loading = ({ isVisible, text }) => {
       overlayStyle={styles.overlay}
     >
       <View>
-        <ActivityIndicator size="large" color="00a680" />
+        <ActivityIndicator size="large" color={Colors.ORANGE_BG}/>
         {text && <Text>{text}</Text>}
       </View>
     </Overlay>
@@ -24,8 +26,8 @@ const styles = StyleSheet.create({
   overlay: {
     height: 100,
     width: 300,
-    backgroundColor: '#fff',
-    borderColor: '#00a680',
+    backgroundColor: Colors.GRAY_LIGHT,
+    borderColor: Colors.ORANGE_BG,
     borderWidth: 2,
     borderRadius: 20,
   },

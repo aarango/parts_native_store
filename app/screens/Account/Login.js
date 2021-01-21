@@ -3,15 +3,15 @@ import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { header as images } from '@auteco/assets';
 import { Colors } from '@auteco/theme';
-import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+import LoginForm from '../../components/Acount/LoginForm'
 
 const Login = () => {
   return (
     <ScrollView>
       <Image source={images.logo} resizeMode="contain" style={styles.logo} />
       <View style={styles.viewContainer}>
-        <Text>Login Form</Text>
+        <LoginForm />
         <CreateAccount />
       </View>
     </ScrollView>

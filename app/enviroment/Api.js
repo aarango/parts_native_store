@@ -1,7 +1,7 @@
-import * as firebase from "firebase";
+import firebase from 'firebase'
 import "firebase/auth";
 
-const appFirebase = firebase.initializeApp({
+const firebaseConfig = firebase.initializeApp({
   apiKey: "AIzaSyDVdUzLO0SAGAahUA69a2Q_DgSb1WRQCrU",
   authDomain: "iot-react-from.firebaseapp.com",
   databaseURL: "https://iot-react-from.firebaseio.com",
@@ -12,4 +12,4 @@ const appFirebase = firebase.initializeApp({
   measurementId: "G-SSHN1BY6RC",
 });
 
-export default appFirebase;
+export default firebaseConfig;

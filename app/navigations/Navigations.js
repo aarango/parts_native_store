@@ -47,7 +47,7 @@ const Navigations = () => {
           options={{ title: 'Búsqueda' }}
         />
         <Tab.Screen
-          name="acount"
+          name="account"
           component={AcountStack}
           options={{ title: 'Mi cuenta' }}
         />
@@ -73,7 +73,7 @@ function screenOptions(route, color) {
     case 'seachStack':
       iconName = 'magnify-plus-outline';
       break;
-    case 'acount':
+    case 'account':
       iconName = 'home-outline';
       break;
     default:

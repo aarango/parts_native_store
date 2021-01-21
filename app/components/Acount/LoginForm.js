@@ -8,34 +8,30 @@ import firebase from '../../enviroment/Api';
 import { useNavigation } from '@react-navigation/native';
 import Loading from '../Loading';
 
-export default function RegisterForm() {
+export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const [formData, setFormData] = useState(defaultFormValue());
   const [loading, setLoading] = useState(false)
   const navigation = useNavigation();
 
   const onSubmit = () => {
-    console.log(!isEmpty(formData.password));
     if (
       isEmpty(formData.email) ||
-      isEmpty(formData.password) ||
-      isEmpty(formData.repeatPassword)
+      isEmpty(formData.password)
     ) {
       console.log('todos los campos está vacios');
     } else if (!validateEmail(formData.email)) {
       console.log('email no valido');
-    } else if (formData.password !== formData.repeatPassword) {
-      console.log('Las contrasñas tiene que ser iguales');
     } else if (size(formData.password) < 6) {
-      console.log('Menor a 6 caracteres');
+      console.log('Contrasela invalida');
     } else {
       setLoading(true)
       firebase
         .auth()
-        .createUserWithEmailAndPassword(formData.email, formData.password)
+        .signInWithEmailAndPassword(formData.email, formData.password)
         .then(() => {
           setLoading(false)
+          console.log('ok')
           navigation.navigate('account');
         })
         .catch((error) => {
@@ -46,9 +42,6 @@ export default function RegisterForm() {
   };
 
   const onChange = (event, type) => {
-    //console.log({ [type]: event.nativeEvent.text });
-    //console.log({ ...formData, [type]: event.nativeEvent.text })
-    //setFormData({ [type]: event.nativeEvent.text });
     setFormData({ ...formData, [type]: event.nativeEvent.text });
   };
 
@@ -81,23 +74,8 @@ export default function RegisterForm() {
           />
         }
       />
-      <Input
-        placeholder="Repetir contraseña"
-        containerStyle={styles.inputForm}
-        password={true}
-        secureTextEntry={showRepeatPassword ? false : true}
-        onChange={(event) => onChange(event, 'repeatPassword')}
-        rightIcon={
-          <Icon
-            type="material-community"
-            name={showRepeatPassword ? 'eye-off-outline' : 'eye-outline'}
-            iconStyle={styles.iconRigth}
-            onPress={() => setShowRepeatPassword(!showRepeatPassword)}
-          />
-        }
-      />
       <Button
-        title="Registrarse"
+        title="Iniciar sesión"
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btnStyle}
         onPress={() => onSubmit()}
@@ -111,13 +89,15 @@ function defaultFormValue() {
   return {
     email: '',
     password: '',
-    repeatPassword: '',
   };
 }
 
 const styles = StyleSheet.create({
   formContainer: {
     marginTop: 30,
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 30
   },
   inputForm: {
     //borderRadius: 5,
