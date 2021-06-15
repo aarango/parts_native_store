@@ -1,0 +1,6 @@
+# parts_native_store
+React Native practica
+
+REPOSITORIO EXPO, REAC NAVIGATION AND REACT NATIVE
+
+YARN INSTALL
